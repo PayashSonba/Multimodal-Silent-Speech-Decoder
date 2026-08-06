@@ -20,9 +20,9 @@ class Preprocessor:
 
         self.raw = None
 
-    # --------------------------------------------------
+    
     # Load EDF
-    # --------------------------------------------------
+    
 
     def load_raw(self):
 
@@ -36,9 +36,7 @@ class Preprocessor:
 
         return self.raw
 
-    # --------------------------------------------------
     # Read channels.tsv
-    # --------------------------------------------------
 
     def assign_channel_types(self):
 
@@ -73,9 +71,7 @@ class Preprocessor:
 
         self.raw.set_channel_types(mapping)
 
-    # --------------------------------------------------
     # Store channel groups
-    # --------------------------------------------------
 
     def extract_channel_groups(self):
 
@@ -126,9 +122,7 @@ class Preprocessor:
         assert len(self.stim_picks) == 1, \
             "Unexpected number of Trigger channels"
 
-    # --------------------------------------------------
     # Quality Control
-    # --------------------------------------------------
 
     def quality_control(self):
 
@@ -189,9 +183,7 @@ class Preprocessor:
 
             print(flat)    
 
-    # --------------------------------------------------
     # Notch Filter
-    # --------------------------------------------------
 
     def notch_filter(self):
 
@@ -202,9 +194,7 @@ class Preprocessor:
             verbose=False
     )
 
-    # --------------------------------------------------
     # EEG Reference
-    # --------------------------------------------------
 
     def rereference(self):
 
@@ -216,9 +206,7 @@ class Preprocessor:
             verbose=False
         )
 
-    # --------------------------------------------------
     # EEG Bandpass
-    # --------------------------------------------------
 
     def filter_eeg(self):
 
@@ -236,9 +224,7 @@ class Preprocessor:
             verbose=False
         )
 
-    # --------------------------------------------------
     # EMG Bandpass
-    # --------------------------------------------------
 
     def filter_emg(self):
 
@@ -258,9 +244,7 @@ class Preprocessor:
                 verbose=False
             )
 
-    # --------------------------------------------------
     # EOG Bandpass
-    # --------------------------------------------------
 
     def filter_eog(self):
 
@@ -280,9 +264,7 @@ class Preprocessor:
                 verbose=False
             )
 
-    # --------------------------------------------------
     # Resample
-    # --------------------------------------------------
 
     def resample(self):
 
@@ -293,9 +275,7 @@ class Preprocessor:
             verbose=False
         )
 
-    # --------------------------------------------------
     # Full pipeline
-    # --------------------------------------------------
 
     def process(self):
 

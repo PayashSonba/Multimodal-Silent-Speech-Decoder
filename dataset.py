@@ -33,9 +33,7 @@ class OpenNeuroDataset(Dataset):
 
         self.scan_dataset()
 
-    # --------------------------------------------------------
     # Scan Dataset
-    # --------------------------------------------------------
 
     def scan_dataset(self):
 
@@ -144,9 +142,7 @@ class OpenNeuroDataset(Dataset):
             f"Valid runs : {len(self.runs)}"
         )
 
-    # --------------------------------------------------------
     # Required by PyTorch
-    # --------------------------------------------------------
 
     def __len__(self):
 
@@ -156,9 +152,7 @@ class OpenNeuroDataset(Dataset):
 
         return self.runs[idx]
 
-    # --------------------------------------------------------
     # Summary
-    # --------------------------------------------------------
 
     def summary(self):
 
