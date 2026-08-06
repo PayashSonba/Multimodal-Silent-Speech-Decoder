@@ -152,8 +152,68 @@ if __name__ == "__main__":
 
     dataset = OpenNeuroDataset(DATASET)
 
-    run = dataset[0]
+    TOTAL = len(dataset)
 
-    segmenter = Segmenter(run)
+    processed = 0
+    failed = 0
+    total_trials = 0
 
-    segmenter.run_pipeline()
+    # -------------------------------
+    # CONFIGURATION
+    # -------------------------------
+
+    MODE = "subset"
+    MAX_RUNS = 10
+
+    # debug
+    if MODE == "debug":
+        runs = dataset[:1]
+
+    # subset
+    elif MODE == "subset":
+        runs = dataset[:MAX_RUNS]
+
+    # full
+    else:
+        runs = dataset
+
+    # -------------------------------
+    # PROCESS
+    # -------------------------------
+
+    for i, run in enumerate(runs, start=1):
+
+        print("\n" + "=" * 60)
+        print(f"Run {i}/{len(runs)}")
+        print("=" * 60)
+
+        print(run["subject"])
+        print(run["session"])
+        print(run["run"])
+
+        try:
+
+            segmenter = Segmenter(run)
+
+            segmenter.run_pipeline()
+
+            processed += 1
+
+            total_trials += len(segmenter.trials)
+
+        except Exception as e:
+
+            failed += 1
+
+            print("FAILED")
+
+            print(e)
+
+    print("\n")
+    print("=" * 60)
+    print("SEGMENTATION SUMMARY")
+    print("=" * 60)
+
+    print("Runs processed :", processed)
+    print("Runs failed    :", failed)
+    print("Trials created :", total_trials)
