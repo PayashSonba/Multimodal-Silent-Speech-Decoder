@@ -170,6 +170,13 @@ class Preprocessor:
 
         flat = []
 
+        for ch in flat:
+                idx = self.raw.ch_names.index(ch)
+                print(
+                    ch,
+                    self.raw.get_channel_types(picks=[idx])[0]
+                )
+        
         for i, ch in enumerate(self.raw.ch_names):
 
             if np.std(data[i]) < 1e-12:
